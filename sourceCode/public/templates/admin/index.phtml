@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <?php require ('components/head.phtml');?>
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+   <div class="wrapper">
+      <!-- Main Header -->
+      <header class="main-header">
+         <!-- Logo -->
+         <?php require ('components/logo.phtml');?>
+         <!-- Header Navbar -->
+         <nav class="navbar navbar-static-top" role="navigation">
+            <!-- Sidebar toggle button-->
+            <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                <span class="sr-only">Toggle navigation</span>
+            </a>
+            <!-- Navbar Right Menu -->
+            <div class="navbar-custom-menu">
+               <ul class="nav navbar-nav">
+                  <!-- Messages: style can be found in dropdown.less-->
+                  <?php require ('components/message.phtml');?>
+                  <!-- /.messages-menu -->
+                  <!-- Notifications Menu -->
+                  <?php require ('components/notification.phtml');?>
+                  <!-- Tasks Menu -->
+                  <?php require ('components/task.phtml');?>
+                  <!-- User Account Menu -->
+                  <?php require ('components/user.phtml');?>
+                  <!-- Control Sidebar Toggle Button -->
+                  <li>
+                     <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+                  </li>
+               </ul>
+            </div>
+         </nav>
+      </header>
+      <!-- Left side column. contains the logo and sidebar -->
+      <aside class="main-sidebar">
+         <!-- sidebar: style can be found in sidebar.less -->
+         <section class="sidebar">
+            <!-- Sidebar user panel (optional) -->
+            <?php require ('components/sidebar-user-panel.phtml');?>
+            <!-- search form (Optional) -->
+            <?php require ('components/search-form.phtml');?>
+            <!-- /.search form -->
+            <!-- Sidebar Menu -->
+            <?php require ('components/sidebar-menu.phtml');?>
+            <!-- /.sidebar-menu -->
+         </section>
+         <!-- /.sidebar -->
+      </aside>
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+         <!-- Main content -->
+        <section class="content">
+            <?php echo $this->layout()->content; ?>
+         </section>
+         <!-- /.content -->
+      </div>
+      <!-- /.content-wrapper -->
+      <!-- Main Footer -->
+      <?php require ('components/footer.phtml');?>
+      <!-- Control Sidebar -->
+      <?php require ('components/control-sidebar.phtml');?>
+      <!-- /.control-sidebar -->
+      <!-- Add the sidebar's background. This div must be placed
+         immediately after the control sidebar -->
+      <div class="control-sidebar-bg"></div>
+   </div>
+   <!-- Control Sidebar -->
+      <?php require ('components/modal.phtml');?>
+   <!-- /.control-sidebar -->
+   <?php require ('components/scripts.phtml');?>
+   <!-- ./wrapper -->
+   <!-- REQUIRED JS SCRIPTS -->
+</body>
+</html>

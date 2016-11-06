@@ -1,0 +1,15 @@
+<ul class="sidebar-menu">
+    <li class="header">Admin</li>
+    <li class="treeview <?php if ($this->controller == 'statistics') { ?>active<?php  } ?>">
+        <a href="#">
+            <i class="fa fa-file"></i> 
+            <span>Statistics</span>
+            <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+            <li class="<?php if ($this->controller == 'statistics' && $this->action == 'index') { ?>active<?php  } ?>">
+                <a href="/admin/statistics">Statistics domain</a>
+            </li>
+        </ul>
+    </li>
+</ul>

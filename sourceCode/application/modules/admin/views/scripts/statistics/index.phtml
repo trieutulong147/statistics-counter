@@ -1,0 +1,54 @@
+<?php 
+    echo $this->partial('/partial/notification.phtml', array(
+        'success'       => !empty($this->success) ? $this->success : '',
+        'warning'       => !empty($this->warning) ? $this->warning : '',
+        'error'         => !empty($this->error) ? $this->error : '',
+    )); 
+?>
+<!-- Content Header (Page header) -->
+<?php 
+    echo $this->partial('/partial/content-header.phtml', array(
+        'controller'    => 'Statistics',
+        'action'        => 'Statistics by domain'
+    )); 
+?>
+<section class="content">
+    <div class="row">
+      	<div class="box">
+      		<div class="box-header">
+                <h3 class="box-title">Statistics by domain</h3>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <table class="table table-striped table-bordered bootstrap-datatable datatable" id="data_table">
+                </table>  
+            </div>
+        </div>
+    </div>
+</section>
+<hr />
+<script type="text/javascript">
+    var href = '';
+    var order = [[1, "asc"]];
+    var coumns = [
+        { "title": "No"},
+        { "title": "Domain"},
+        { "title": "Hit"},
+        { "title": "User"}
+    ];
+    var url = "/admin/statistics/get-statistics-ajax";
+    $(document).ready(function(){
+        var oTable = $('#data_table').dataTable({
+            "processing": true,
+            "columns": coumns,
+            "bJQueryUI": true,
+			"sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span12'i><'span12 center'p>>",
+			"oLanguage": {
+                "sLengthMenu": "_MENU_ records per page"
+			},
+            "ajax": {
+                url: url,
+                error: handleAjaxError
+            }
+		});
+    });
+</script>

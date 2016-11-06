@@ -1,0 +1,18 @@
+<?php if(!empty($this->error)){ ?>
+    <div class="alert alert-error">
+      <button type="button" class="close" data-dismiss="alert">×</button>
+      <strong>Error!</strong> <?php echo $this->error;?>.
+    </div>
+<?php }?>
+<?php if(!empty($this->success)){ ?>
+    <div class="alert alert-success">
+      <button type="button" class="close" data-dismiss="alert">×</button>
+      <strong>Success!</strong> <?php echo $this->success; ?>.
+    </div>
+<?php }?>
+<?php if(!empty($this->warning)){ ?>
+    <div class="alert bg-yellow-active">
+      <button type="button" class="close" data-dismiss="alert">×</button>
+      <strong>Warning!</strong> <?php echo $this->warning;?>.
+    </div>
+<?php }?>
