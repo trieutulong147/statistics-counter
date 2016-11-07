@@ -34,9 +34,14 @@
 &lt;/VirtualHost&gt;
 </pre>
             </li>
-            <li>Include beacon image on pages of other web-sites which you want to count hits with code: &lt;img src='&lt;scheme&gt;://&lt;domain&gt;/index/beacon'/&gt;. For example: 
-            <pre>&lt;img src='http://statistics-counter.com/index/beacon' /&gt;</pre></li>
-            <li>Login admin page to view statistics with username "admin", password "admin" via url: &lt;scheme&gt;://&lt;domain&gt;/admin. For example: 
+            <li>Include beacon image on pages of other web-sites which you want to count hits with code: 
+<pre>
+&lt;img src='&lt;scheme&gt;://&lt;domain&gt;/index/beacon'/&gt;. 
+</pre>
+For example: 
+            <pre>&lt;img src='http://statistics-counter.com/index/beacon' /&gt;</pre>
+            </li>
+            <li>Login admin page to view statistics with username "admin", password "admin" via url: <pre>&lt;scheme&gt;://&lt;domain&gt;/admin.</pre> For example: 
             <pre>http://statistics-counter.com/admin</pre></li>
             <li>Enjoy it :D</li>
         </ul>
