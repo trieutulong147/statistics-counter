@@ -1,9 +1,9 @@
 # statistics-counter
 1/ Name Project: Statistics Counter. <br/>
-2/ Language: PHP (use Zend Framework 1.11)
-3/ Assumptions:
-- Unique user in this project is unique ip which request to beacon image url, but you can change to anything you want. For example: you can use cookie to define unique user.
-4/ Installation:
+2/ Language: PHP (use Zend Framework 1.11) <br/>
+3/ Assumptions: <br/>
+- Unique user in this project is unique ip which request to beacon image url, but you can change to anything you want. For example: you can use cookie to define unique user. <br/>
+4/ Installation: <br/>
 - Create database with name: statistics_counter
 - Import database file (located in /DB/statistics_counter.sql) to database which has just created
 - Create user and set permission for user to access database statistics_counter
@@ -26,8 +26,8 @@ For example: In Apache:
         AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript
     </Directory>
 </VirtualHost>
-- Include beacon image on pages of other web-sites which you want to count hits with code: <img src="<scheme>://<domain>/index/beacon" />. For example: <img src="http://statistics-counter.com/index/beacon" />
-- Login admin page to view statistics with username "admin", password "admin" via url: <scheme>://<domain>/admin. For example: http://statistics-counter.com/admin
-- Enjoy it :D
-5/ Optimization:
+- Include beacon image on pages of other web-sites which you want to count hits with code: <img src="<scheme>://<domain>/index/beacon" />. For example: <img src="http://statistics-counter.com/index/beacon" /> <br/>
+- Login admin page to view statistics with username "admin", password "admin" via url: <scheme>://<domain>/admin. For example: http://statistics-counter.com/admin <br/>
+- Enjoy it :D <br/>
+5/ Optimization: <br/>
 - You can use statistics table in Database to store statistics data to access more quickly. Run statistics crontab everyday or everyhour to aggregate data and store them into statistics table. After that, you should use Model_Admin_StatisticsModel class to fetch data from statistics table (located in /sourceCode/application/models/Admin/StatisticsModel.php)
