@@ -1,5 +1,5 @@
 # statistics-counter
-1/ Name Project: Statistics Counter
+1/ Name Project: Statistics Counter. <br/>
 2/ Language: PHP (use Zend Framework 1.11)
 3/ Assumptions:
 - Unique user in this project is unique ip which request to beacon image url, but you can change to anything you want. For example: you can use cookie to define unique user.
