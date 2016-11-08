@@ -12,8 +12,8 @@ class Admin_StatisticsController extends TTL_Controller_Action{
         $auth->setStorage(new Zend_Auth_Storage_Session('Zend_Auth_Admin'));
         
 		// Set layout
-		$template_path = TEMPLATE_PATH . "/admin/";
-		$this->_loadTemplate($template_path, 'admin_template.ini', 'admin_template');
+		$templatePath = TEMPLATE_PATH . "/admin/";
+		$this->_loadTemplate($templatePath, 'admin_template.ini', 'admin_template');
 		
 		$adminInfo = $auth->getIdentity();
         $this->_adminInfo = $adminInfo;
@@ -39,27 +39,27 @@ class Admin_StatisticsController extends TTL_Controller_Action{
         try {            
             // Prepare parameters
     		$params = $this->_request->getParams(); // Get paramters without filtering
-            $log_request_model = new Model_Admin_LogRequestModel();
-    		$data_response = array();
+            $logRequestModel = new Model_Admin_LogRequestModel();
+    		$dataResponse = array();
     		$totaldata = 0;
     		$recordsFiltered = 0;
     
-    		$array_statistics = $log_request_model->getStatistics();
+    		$arrayStatistics = $logRequestModel->getStatistics();
             $x = 1;
-    		foreach ($array_statistics as $value) {
-    			$domain_name = $value['domain_name'];
+    		foreach ($arrayStatistics as $value) {
+    			$domainName = $value['domain_name'];
                 $hits = $value['hits'];
                 $users = $value['users'];
                 
-                $item = array($x, $domain_name, $hits, $users);
-    			array_push($data_response, $item);
+                $item = array($x, $domainName, $hits, $users);
+    			array_push($dataResponse, $item);
                 $x++;
     		}
     
-    		$totaldata = sizeof($data_response);
+    		$totaldata = sizeof($dataResponse);
     
     		$response = array(
-                "data" => $data_response
+                "data" => $dataResponse
             );
     	
             $this->_showJson($response);

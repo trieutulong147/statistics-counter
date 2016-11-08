@@ -11,8 +11,8 @@ class Admin_IndexController extends TTL_Controller_Action{
         $auth->setStorage(new Zend_Auth_Storage_Session('Zend_Auth_Admin'));
         
 		// Set layout
-		$template_path = TEMPLATE_PATH . "/admin/";
-		$this->_loadTemplate($template_path, 'admin_template.ini', 'admin_template');
+		$templatePath = TEMPLATE_PATH . "/admin/";
+		$this->_loadTemplate($templatePath, 'admin_template.ini', 'admin_template');
 		
 		$adminInfo = $auth->getIdentity();
 		$this->_adminInfo = $adminInfo;

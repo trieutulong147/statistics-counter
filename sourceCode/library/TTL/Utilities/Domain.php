@@ -7,11 +7,11 @@
 */
 class TTL_Utilities_Domain {
 	public static function getDomainOfRequest() {
-        $referer_url = !empty($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : false;
-        if ($referer_url) {
-            $parse = parse_url($referer_url);
-            $domain_name = $parse['host'];
-            return $domain_name;    
+        $refererUrl = !empty($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : false;
+        if ($refererUrl) {
+            $parse = parse_url($refererUrl);
+            $domainName = $parse['host'];
+            return $domainName;    
         } else {
             return false;
         }

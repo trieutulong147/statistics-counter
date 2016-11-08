@@ -17,7 +17,7 @@ class TTL_System_Auth{
 			return false;
 		} else {
 		    $paswd = sha1($password,false);
-            $this->__checkIsLogin($uname, $paswd, $remember);
+            return $this->__checkIsLogin($uname, $paswd, $remember);            
         }
         
     }

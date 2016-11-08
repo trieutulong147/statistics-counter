@@ -31,12 +31,12 @@ class TTL_Controller_Action extends Zend_Controller_Action{
 		$this->view->module = $this->_request->getModuleName();
 	}
 	
-	protected function _loadTemplate($template_path, $fileConfig = 'template.ini',$sectionConfig = 'template'){
+	protected function _loadTemplate($templatePath, $fileConfig = 'template.ini', $sectionConfig = 'template'){
 		
         // Prepare variables
-		$filename = $template_path . "/" . $fileConfig;
+		$filename = $templatePath . "/" . $fileConfig;
 		$section = $sectionConfig;
-		$config = new Zend_Config_Ini($filename,$section);
+		$config = new Zend_Config_Ini($filename, $section);
 		$config = $config->toArray();
 		
 		$baseUrl = $this->_request->getBaseUrl();
@@ -61,7 +61,7 @@ class TTL_Controller_Action extends Zend_Controller_Action{
 		$this->view->jsUrl = $jsUrl;
 		$this->view->imgUrl = $imgUrl;
 		
-		$option = array('layoutPath'=> $template_path, 'layout'=> $config['layout']);
+		$option = array('layoutPath' => $templatePath, 'layout' => $config['layout']);
 		Zend_Layout::startMvc($option);
 		
 	}

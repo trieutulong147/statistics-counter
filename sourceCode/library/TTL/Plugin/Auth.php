@@ -17,20 +17,20 @@ class TTL_Plugin_Auth extends Zend_Controller_Plugin_Abstract {
 	}
     
     private function __checkNeedAuth ($moduleName, $controllerName) {
-        $need_auth = TRUE;
+        $needAuth = TRUE;
 		
-		$free_access = array(
+		$freeAccess = array(
 			"default" => array(),
 			"admin" => array("auth", "error")
 		);
 		
-		if (in_array($moduleName, array_keys($free_access))) {
-			if ((count($free_access[$moduleName]) == 0) || in_array($controllerName, $free_access[$moduleName])) {
-				$need_auth = FALSE;
+		if (in_array($moduleName, array_keys($freeAccess))) {
+			if ((count($freeAccess[$moduleName]) == 0) || in_array($controllerName, $freeAccess[$moduleName])) {
+				$needAuth = FALSE;
 			}
 		}
         
-        return $need_auth;
+        return $needAuth;
     }
     
     private function __authen ($request, $moduleName) {
