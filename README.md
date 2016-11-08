@@ -2,6 +2,7 @@
 <ol>
     <li>Name Project: Statistics Counter.</li>
     <li>Language: PHP (use Zend Framework 1.11)</li>
+    <li>Template admin: AdminLTE (more infor at https://almsaeedstudio.com/themes/AdminLTE/index2.html)</li>
     <li>Assumptions:
         <ul>
             <li>Unique user in this project is unique ip which request to beacon image url, but you can change to anything you want. For example: you can use cookie to define unique user.</li>
