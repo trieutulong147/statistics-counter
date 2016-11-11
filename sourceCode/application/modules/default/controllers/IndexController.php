@@ -6,8 +6,10 @@ class IndexController extends TTL_Controller_Action {
 
     public function predisPatch() {
         // Set layout
-        $templatePath = TEMPLATE_PATH . "/default/";
-        $this->_loadTemplate($templatePath, 'template.ini', 'template');
+        $this->_templatePath = TEMPLATE_PATH . "/default/";
+		$this->_fileConfig = 'template.ini'; 
+        $this->_sectionConfig = 'template';
+        parent::_loadTemplate();
     }
     
     public function indexAction() {

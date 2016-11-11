@@ -1,17 +1,21 @@
 <?php
 
 class Admin_AuthController extends TTL_Controller_Action
-{	
-    public function init() {        
+{
+    public function init() {
         parent::init();
+    }
+    
+    public function _preDisPatch() {
+        $this->_templatePath = TEMPLATE_PATH . "/admin/";
+		$this->_fileConfig = 'admin_template.ini'; 
+        $this->_sectionConfig = 'login';
+        parent::_loadTemplate();
     }
     
 
     public function loginAction()
-    {
-    	$templatePath = TEMPLATE_PATH . "/admin/";
-		$this->_loadTemplate($templatePath, 'admin_template.ini', 'login');
-        
+    {   
         if ($this->_request->isPost()) {
             $auth = new TTL_System_Auth();
             

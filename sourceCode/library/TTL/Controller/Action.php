@@ -8,6 +8,10 @@
 class TTL_Controller_Action extends Zend_Controller_Action{
 	protected $_arrParam;
     protected $_ip;
+    protected $_templatePath;
+    protected $_fileConfig = 'template.ini';
+    protected $_sectionConfig = 'template';
+    protected $_config;
     
 	public function init(){
     	$this->_arrParam = $this->_request->getParams();   
@@ -25,35 +29,35 @@ class TTL_Controller_Action extends Zend_Controller_Action{
 			$p = TTL_Utilities_String::filterString($p);
 		}
         
+        // Transfer variables to view
     	$this->view->arrParam = $this->_arrParam;
         $this->view->controller =  $this->_request->getControllerName();
 		$this->view->action =  $this->_request->getActionName();
 		$this->view->module = $this->_request->getModuleName();
 	}
 	
-	protected function _loadTemplate($templatePath, $fileConfig = 'template.ini', $sectionConfig = 'template'){
-		
+	protected function _loadTemplate(){
         // Prepare variables
-		$filename = $templatePath . "/" . $fileConfig;
-		$section = $sectionConfig;
+		$filename = $this->_templatePath . "/" . $this->_fileConfig;
+		$section = $this->_sectionConfig;
 		$config = new Zend_Config_Ini($filename, $section);
-		$config = $config->toArray();
+		$this->_config = $config->toArray();
 		
 		$baseUrl = $this->_request->getBaseUrl();
-		$templateUrl = $baseUrl .$config['url'];
-		$cssUrl = $templateUrl . $config['dirCss'];
-		$jsUrl = $templateUrl . $config['dirJs'];
-		$imgUrl = $templateUrl . $config['dirImg'];
+		$templateUrl = $baseUrl .$this->_config['url'];
+		$cssUrl = $templateUrl . $this->_config['dirCss'];
+		$jsUrl = $templateUrl . $this->_config['dirJs'];
+		$imgUrl = $templateUrl . $this->_config['dirImg'];
 		
         // Set empty for title, meta tag, css file, js file 
         $this->__resetLayout();
         
 		// Set title
-		$this->view->headTitle($config['title']);
+		$this->view->headTitle($this->_config['title']);
         
-		$this->__appendMetaTag($config);
-		$this->__appendCssFile($config);
-        $this->__appendJsFile($config);
+		$this->__appendMetaTag();
+		$this->__appendCssFile();
+        $this->__appendJsFile();
 		
 		
 		$this->view->templateUrl = $templateUrl;
@@ -61,7 +65,7 @@ class TTL_Controller_Action extends Zend_Controller_Action{
 		$this->view->jsUrl = $jsUrl;
 		$this->view->imgUrl = $imgUrl;
 		
-		$option = array('layoutPath' => $templatePath, 'layout' => $config['layout']);
+		$option = array('layoutPath' => $this->_templatePath, 'layout' => $this->_config['layout']);
 		Zend_Layout::startMvc($option);
 		
 	}
@@ -73,45 +77,25 @@ class TTL_Controller_Action extends Zend_Controller_Action{
 		$this->view->headScript()->getContainer()->exchangeArray(array());
     }
     
-    private function __appendMetaTag ($config) {
-        if (array_key_exists('metaHttp', $config) && count($config['metaHttp']) > 0) {		
-			foreach ($config['metaHttp'] as $key => $value) {
+    private function __appendMetaTag () {
+        $this->__appendHtmlElementToView('metaHttp');
+        $this->__appendHtmlElementToView('metaName');
+    }
+    
+    private function __appendCssFile () {
+        $this->__appendHtmlElementToView('fileCss');
+    }
+    
+    private function __appendJsFile () {
+        $this->__appendHtmlElementToView('fileJs');
+    }
+    
+    private function __appendHtmlElementToView ($element) {
+        if (array_key_exists($element, $this->_config) && count($this->_config[$element]) > 0) {		
+			foreach ($this->_config[$element] as $key => $value) {
 				$tmp = explode("|",$value);				
 				$this->view->headMeta()->appendHttpEquiv($tmp[0],$tmp[1]);
 			}
 		}
-		
-		if (array_key_exists('metaName', $config) && count($config['metaName']) > 0) {		
-			foreach ($config['metaName'] as $key => $value) {
-				$tmp = explode("|",$value);				
-				$this->view->headMeta()->appendName($tmp[0],$tmp[1]);
-			}
-		}
-    }
-    
-    private function __appendCssFile ($config) {
-        if (array_key_exists('fileCss', $config) && count($config['fileCss']) > 0 ) {		
-			foreach ($config['fileCss'] as $key => $css) {
-				$this->view->headLink()->appendStylesheet($cssUrl . $css,'screen');
-			}
-		}
-    }
-    
-    private function __appendJsFile ($config) {
-        if (array_key_exists('fileJs', $config) && count($config['fileJs']) > 0) {		
-			foreach ($config['fileJs'] as $key => $js) {
-				$this->view->headScript()->appendFile($jsUrl . $js,'text/javascript');
-			}
-		}
-    }
-    
-    // Show data in json form
-    protected function _showJson($data, $jsonEncode = 1){
-        if ($jsonEncode == 1) {
-            $data = json_encode($data);    
-        }
-        $this->getResponse()->setHeader('Content-Type', 'application/json');
-        $this->getResponse()->setBody($data);
-        return;
     }
 }

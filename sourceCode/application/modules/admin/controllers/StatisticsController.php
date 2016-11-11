@@ -12,8 +12,10 @@ class Admin_StatisticsController extends TTL_Controller_Action{
         $auth->setStorage(new Zend_Auth_Storage_Session('Zend_Auth_Admin'));
         
 		// Set layout
-		$templatePath = TEMPLATE_PATH . "/admin/";
-		$this->_loadTemplate($templatePath, 'admin_template.ini', 'admin_template');
+		$this->_templatePath = TEMPLATE_PATH . "/admin/";
+		$this->_fileConfig = 'admin_template.ini'; 
+        $this->_sectionConfig = 'admin_template';
+        parent::_loadTemplate();
 		
 		$adminInfo = $auth->getIdentity();
         $this->_adminInfo = $adminInfo;
@@ -61,8 +63,8 @@ class Admin_StatisticsController extends TTL_Controller_Action{
     		$response = array(
                 "data" => $dataResponse
             );
-    	
-            $this->_showJson($response);
+            
+            $this->_helper->json($response);
         } catch (Exception $e) {
             echo $e->getMessages();
         }
