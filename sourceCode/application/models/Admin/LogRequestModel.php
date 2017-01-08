@@ -8,7 +8,7 @@ class Model_Admin_LogRequestModel extends Zend_Db_Table_Abstract {
 	 * @param ArrayObject $params: Array of parameters
 	 * @return ArrayObject $result: array of statistics
 	 */
-	public function getStatistics ($params=null) {
+	public function getStatistics($params=null) {
 		$db = Zend_Db_Table::getDefaultAdapter();
         
 		$mySql = $db->select()

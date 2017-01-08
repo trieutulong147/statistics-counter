@@ -5,9 +5,8 @@
 * Create time: 06/11/2016
 * Update time: 06/11/2016
 */
-class TTL_Utilities_String{
-    
-    public static function filterString($string){
+class TTL_Utilities_String {
+    public static function filterString($string) {
 		$returnString = @trim($string);
 		$returnString = @strip_tags($returnString);
 

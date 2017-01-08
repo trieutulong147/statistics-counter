@@ -20,6 +20,7 @@ class TTL_Utilities_Ip {
                 }
             }
         }
+        
         return isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : false;
     }
 
@@ -27,8 +28,7 @@ class TTL_Utilities_Ip {
      * Ensures an ip address is both a valid IP and does not fall within
      * a private network range.
      */
-    public static function validateIp($ip)
-    {
+    public static function validateIp($ip) {
         if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 | FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE) === false) {
             return false;
         }

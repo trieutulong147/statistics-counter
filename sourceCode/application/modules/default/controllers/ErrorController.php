@@ -1,10 +1,6 @@
 <?php
-
-class ErrorController extends Zend_Controller_Action
-{
-
-    public function errorAction()
-    {
+class ErrorController extends Zend_Controller_Action {
+    public function errorAction() {
         $errors = $this->_getParam('error_handler');
         
         if (!$errors || !$errors instanceof ArrayObject) {
@@ -22,8 +18,6 @@ class ErrorController extends Zend_Controller_Action
                 $this->view->message = 'Page not found';
                 break;
             default:
-            Zend_Debug::dump($errors);die;
-                echo "<marquee>Hệ thống đang nâng cấp. Mời các bạn quay lại sau ít phút</marquee>";die;
                 // application error
                 $this->getResponse()->setHttpResponseCode(500);
                 $priority = Zend_Log::CRIT;
@@ -45,16 +39,14 @@ class ErrorController extends Zend_Controller_Action
         $this->view->request   = $errors->request;
     }
 
-    public function getLog()
-    {
+    public function getLog() {
         $bootstrap = $this->getInvokeArg('bootstrap');
         if (!$bootstrap->hasResource('Log')) {
             return false;
         }
+        
         $log = $bootstrap->getResource('Log');
         return $log;
     }
-
-
 }
 
