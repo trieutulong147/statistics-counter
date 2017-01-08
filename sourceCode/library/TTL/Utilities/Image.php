@@ -5,15 +5,13 @@
 * Create time: 06/11/2016
 * Update time: 06/11/2016
 */
-class TTL_Utilities_Image{
-    
-    public static function createJpegImageWithString ($path, $string) {
+class TTL_Utilities_Image {
+    public static function createJpegImageWithString($path, $string) {
         /* Attempt to open */
         $im = @imagecreatefromjpeg($path);
     
         /* See if it failed */
-        if(!$im)
-        {
+        if (!$im) {
             $lendth = strlen($string);
             $width = $lendth*10 + 5;
             
